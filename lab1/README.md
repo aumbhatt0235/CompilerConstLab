@@ -1,4 +1,4 @@
-# Lex : *Lexical Analyzer Generator*
+# *Lex* : Lexical Analyzer Generator
 
 ##### Program Structure
 ```C
