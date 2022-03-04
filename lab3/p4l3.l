@@ -4,45 +4,47 @@
 #include <stdlib.h>
 #include <string.h>
 
-void getYear(int y) { printf("Year : %d", y); }
+void getYear(int y) { printf("\nYear : %d", y); }
 void getStream(char s[]) {
 
-	printf("Stream : ");
+	printf("\nStream : ");
 
-	if( strcmp(s[1], "4") ) printf("Mech");
-	else if( strcmp(s[1], "7") ) printf("CS");
-	else if( strcmp(s[1], "9") ) printf("Civil");
-	else if( strcmp(s[1], "A") ) printf("EEE");
-	else printf("--- Error");
+	if( s[1] == '4' ) printf("Mech");
+	else if( s[1] == '9' ) printf("Civil");
+	else if( s[1] == '7' ) printf("CS");
+	else if( s[1] == 'A' ) printf("EEE");
+	else printf("\n--- Error");
 
-	printf("\n");
 }
 void getSchool(char p[]) {
 
-	printf("School Type :\n");
+	printf("\nSchool Type : ");
 
-	if( strcmp(p[0], "P") )	printf("Practice School");
-	else if( strcmp(p[0], "T") ) printf("Thesis");
-	else printf("--- Error");
+	if( p[0] == 'P' ) printf("Practice School");
+	else if( p[0] == 'T' ) printf("Thesis");
+	else printf("\n--- Error");
 
-	printf("\n");
 }
 void getId(int i) {
-	printf("ID : %d\n");
+	printf("\nID : %d", i);
 }
-void getCampus(char c) {
-	switch(c) {
+
+void getCampus(char *c) {
+	printf("\nCampus: ");
+	
+	switch(c[0]) {
 		case 'U': printf("Dubai");
 			break;
 		case 'H': printf("Hyderabad");
 			break;
 		case 'G': printf("Goa");
 			break;
-		case 'P': printf("P");
+		case 'P': printf("Pilani");
 			break;
-		default: printf("--- Error");
+		default: printf("\n--- Error");
 			break;
 	};
+
 	printf("\n");
 }
 
@@ -53,7 +55,7 @@ void getCampus(char c) {
 [2][0][0-2][0-9]	{ getYear( atoi(yytext) ); }
 ["A"]["A"|479]		{ getStream(yytext); }
 ["P"|"T"]["S"]		{ getSchool(yytext); }
-[0]+[1-999]		{ getId( atoi(yytext) ); }
+[0]*[1-999]+			{ getId( atoi(yytext) ); }
 ["U"|"G"|"H"|"P"]	{ getCampus(yytext); }
 
 %%
