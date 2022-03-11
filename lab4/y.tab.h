@@ -56,8 +56,11 @@ extern int yydebug;
     YYUNDEF = 257,                 /* "invalid token"  */
     PLUS = 258,                    /* PLUS  */
     MINUS = 259,                   /* MINUS  */
-    NL = 260,                      /* NL  */
-    INT = 261                      /* INT  */
+    MUL = 260,                     /* MUL  */
+    DIV = 261,                     /* DIV  */
+    NL = 262,                      /* NL  */
+    INT = 263,                     /* INT  */
+    POW = 264                      /* POW  */
   };
   typedef enum yytokentype yytoken_kind_t;
 #endif
@@ -68,12 +71,23 @@ extern int yydebug;
 #define YYUNDEF 257
 #define PLUS 258
 #define MINUS 259
-#define NL 260
-#define INT 261
+#define MUL 260
+#define DIV 261
+#define NL 262
+#define INT 263
+#define POW 264
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
-typedef int YYSTYPE;
+union YYSTYPE
+{
+#line 8 "yp1l4.y"
+ float val; 
+
+#line 88 "y.tab.h"
+
+};
+typedef union YYSTYPE YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define YYSTYPE_IS_DECLARED 1
 #endif

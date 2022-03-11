@@ -11,6 +11,8 @@
 #include "y.tab.h"
 
 %}
+%token INTEGER PLUS MINUS NL
+
 // Grammer Rules
 %%
 E: E PLUS E
@@ -29,7 +31,7 @@ int main() {
 }
 ```
 
-## Runnning LEX & YACC
+## Running LEX & YACC
 <file.l> --> lex source
 <file.y> --> yacc source
 
@@ -44,8 +46,44 @@ lex <file.l>
 Over here, `y.tab.h` is already included in lex source.
 <br>
 ```
-lex y.tab.c lex.yy.c -ll
+gcc y.tab.c lex.yy.c -ll
 ```
 where `y.tab.c` is the parser.
 <br>
 
+## YACC Directives
+Left Associativity is given to operators PLUS & MINUS as follows: in `.y`
+```YACC
+%left PLUS MINUS
+```
+
+## Order of Precedence
+In YACC, the order of precedence is from LOW to HIGH: in `.y`
+```YACC
+%left PLUS MINUS // Lower Precedence
+%left MUL DIV	// Higher Precedence
+%right POW
+```
+
+## Union Construct
+Allows us to change the datatype of the input.
+Example: Taking floating point input:
+In `.y`
+```YACC
+// Declaration
+
+%union 
+{
+	float val;
+}
+%token <val> INT
+%type <val> E
+%token PLUS MINUS
+```
+In `.l`
+```lex
+[0-9]+(.[0-9]+) {
+	yylval.val = atoi(yytext);
+	return INT;
+}
+```

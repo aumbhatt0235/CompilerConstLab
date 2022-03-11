@@ -4,7 +4,7 @@
 
 %%
 
-.*"//".*	{ printf("\nFound Comment: %s", yytext); }
+"//".*	{ printf("\nFound Comment: %s", yytext); }
 .*		{ fprintf(yyout, "%s", yytext); }
 
 %%
