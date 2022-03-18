@@ -58,9 +58,13 @@ extern int yydebug;
     MINUS = 259,                   /* MINUS  */
     MUL = 260,                     /* MUL  */
     DIV = 261,                     /* DIV  */
-    NL = 262,                      /* NL  */
-    INT = 263,                     /* INT  */
-    POW = 264                      /* POW  */
+    EQL = 262,                     /* EQL  */
+    LPR = 263,                     /* LPR  */
+    RPR = 264,                     /* RPR  */
+    NL = 265,                      /* NL  */
+    INT = 266,                     /* INT  */
+    VAR = 267,                     /* VAR  */
+    POW = 268                      /* POW  */
   };
   typedef enum yytokentype yytoken_kind_t;
 #endif
@@ -73,18 +77,22 @@ extern int yydebug;
 #define MINUS 259
 #define MUL 260
 #define DIV 261
-#define NL 262
-#define INT 263
-#define POW 264
+#define EQL 262
+#define LPR 263
+#define RPR 264
+#define NL 265
+#define INT 266
+#define VAR 267
+#define POW 268
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 8 "yp1l4.y"
- float val; 
+#line 9 "copy.y"
+ float val; int v; 
 
-#line 88 "y.tab.h"
+#line 96 "y.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;
