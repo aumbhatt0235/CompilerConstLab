@@ -360,9 +360,9 @@ struct yy_trans_info
 	flex_int32_t yy_verify;
 	flex_int32_t yy_nxt;
 	};
-static const flex_int16_t yy_accept[11] =
+static const flex_int16_t yy_accept[10] =
     {   0,
-        2,    2,    4,    2,    3,    2,    2,    1,    1,    0
+        0,    0,    4,    2,    3,    2,    1,    1,    0
     } ;
 
 static const YY_CHAR yy_ec[256] =
@@ -399,31 +399,31 @@ static const YY_CHAR yy_ec[256] =
 
 static const YY_CHAR yy_meta[4] =
     {   0,
-        1,    2,    1
+        1,    2,    3
     } ;
 
-static const flex_int16_t yy_base[13] =
+static const flex_int16_t yy_base[12] =
     {   0,
-        0,    0,    7,    0,    8,    3,    0,    0,    0,    8,
-        4,    3
+        0,    0,    7,    8,    8,    0,    0,    0,    8,    2,
+        3
     } ;
 
-static const flex_int16_t yy_def[13] =
+static const flex_int16_t yy_def[12] =
     {   0,
-       10,    1,   10,   11,   10,   11,   11,   12,   12,    0,
-       10,   10
+        9,    1,    9,    9,    9,   10,   11,   11,    0,    9,
+        9
     } ;
 
 static const flex_int16_t yy_nxt[12] =
     {   0,
-        4,    5,    6,    9,    7,    8,   10,    3,   10,   10,
-       10
+        4,    5,    6,    8,    7,    8,    9,    3,    9,    9,
+        9
     } ;
 
 static const flex_int16_t yy_chk[12] =
     {   0,
-        1,    1,    1,   12,   11,    6,    3,   10,   10,   10,
-       10
+        1,    1,    1,   11,   10,   11,    3,    9,    9,    9,
+        9
     } ;
 
 static yy_state_type yy_last_accepting_state;
@@ -691,7 +691,7 @@ yy_match:
 			while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 				{
 				yy_current_state = (int) yy_def[yy_current_state];
-				if ( yy_current_state >= 11 )
+				if ( yy_current_state >= 10 )
 					yy_c = yy_meta[yy_c];
 				}
 			yy_current_state = yy_nxt[yy_base[yy_current_state] + yy_c];
@@ -724,7 +724,7 @@ do_action:	/* This label is used only to access EOF actions. */
 case 1:
 YY_RULE_SETUP
 #line 7 "p3l3.l"
-{ printf("\nFound Comment: %s", yytext); }
+{ printf("%s\n-> ", yytext); }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
@@ -1033,7 +1033,7 @@ static int yy_get_next_buffer (void)
 		while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 			{
 			yy_current_state = (int) yy_def[yy_current_state];
-			if ( yy_current_state >= 11 )
+			if ( yy_current_state >= 10 )
 				yy_c = yy_meta[yy_c];
 			}
 		yy_current_state = yy_nxt[yy_base[yy_current_state] + yy_c];
@@ -1061,11 +1061,11 @@ static int yy_get_next_buffer (void)
 	while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 		{
 		yy_current_state = (int) yy_def[yy_current_state];
-		if ( yy_current_state >= 11 )
+		if ( yy_current_state >= 10 )
 			yy_c = yy_meta[yy_c];
 		}
 	yy_current_state = yy_nxt[yy_base[yy_current_state] + yy_c];
-	yy_is_jam = (yy_current_state == 10);
+	yy_is_jam = (yy_current_state == 9);
 
 		return yy_is_jam ? 0 : yy_current_state;
 }

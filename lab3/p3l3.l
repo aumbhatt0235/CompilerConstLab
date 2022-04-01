@@ -4,8 +4,8 @@
 
 %%
 
-"//".*	{ printf("\nFound Comment: %s", yytext); }
-.*		{ fprintf(yyout, "%s", yytext); }
+"//".*			{ printf("%s\n-> ", yytext); }
+.			{ fprintf(yyout, "%s", yytext); }
 
 %%
 
